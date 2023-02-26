@@ -18,7 +18,7 @@ public static class ServiceLocator
         }
         catch (Exception ex)
         {
-            throw new NotImplementedException("Service not available.");
+            throw new NotImplementedException("Service not available.");    
         }
     }
 }

@@ -43,7 +43,7 @@ public class Ship : MonoBehaviour
 
     private void Shoot()
     {
-        ShootCommand shoot = new ShootCommand();
+        ShipShootCommand shoot = new ShipShootCommand();
         shoot.Execute();
     }
 }

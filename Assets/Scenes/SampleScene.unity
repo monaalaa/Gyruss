@@ -277,10 +277,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 471172250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b193c126618db4ab20053e9e9d571a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bc56b821e4dfb44b839612ae84475d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: {fileID: 1334717026903059971, guid: 3f626ecdcffaa7641a8ab7545c720779, type: 3}
+  model: {fileID: 1334717026903059970, guid: 3f626ecdcffaa7641a8ab7545c720779, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8104460751771347687, guid: 761fe7385dabb344fa5a76d161ee95d2, type: 3}
+  objectPool: {fileID: 0}
 --- !u!4 &1860445085
 Transform:
   m_ObjectHideFlags: 0

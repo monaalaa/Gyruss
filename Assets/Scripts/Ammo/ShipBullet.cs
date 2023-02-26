@@ -4,21 +4,17 @@ using UnityEngine.Pool;
 
 public class ShipBullet : MonoBehaviour, IBullet
 {
-    private IObjectPool<ShipBullet> objectPool;
-
     [SerializeField] float speed = 10;
-    
-    private Tween _movingTween;
-   
     private void OnEnable()
     {
+       var ship= FindObjectOfType<Ship>();
+        transform.position = ship.transform.position;
         Shoot();
     }
 
     public void Shoot()
     {
-        Debug.Log(transform.position);
-        _movingTween = transform.DOMove(Vector3.zero, speed).
+         transform.DOMove(Vector3.zero, speed).
             SetSpeedBased(true).OnComplete(() => Release()).SetEase(Ease.Linear); 
     }
 
@@ -27,14 +23,9 @@ public class ShipBullet : MonoBehaviour, IBullet
         //Check if collide with Enemy
         Release();
     }
-    //ToDO: On collide with enemy vanish
+    
     public void Release()
     {
-        ServiceLocator.Get<ObjectPool>().ammoPool.Release(this);
-    }
-
-    public void SetPool(IObjectPool<ShipBullet> pool)
-    {
-        objectPool = pool;
+         ServiceLocator.Get<ShipAmmoPool>().objPool.Release(gameObject);
     }
 }

@@ -1,23 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Enemy enemy;
+    [SerializeField] EnemyPool enemyPool;
 
-    private void Start()
+
+    private void Update()
     {
-        StartCoroutine( InitEnemy(10));
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartCoroutine(InitEnemy(10));
+        }
     }
-
     IEnumerator InitEnemy(int numberOfEnemies)
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            var obj = Instantiate(enemy);
-            obj.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+              enemyPool.Get();
+             yield return new WaitForSeconds(0.5f);
         }
     }
 }
