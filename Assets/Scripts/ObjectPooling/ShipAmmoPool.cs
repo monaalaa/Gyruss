@@ -10,6 +10,7 @@ public class ShipAmmoPool : ObjectPoolBase
     protected override void OnGet(GameObject obj)
     {
         obj.transform.position = spawnPoint.position;
+        obj.transform.rotation = transform.rotation;
         base.OnGet(obj);
     }
 

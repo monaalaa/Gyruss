@@ -31,4 +31,9 @@ public class ShipBullet : MonoBehaviour, IBullet
     {
          ServiceLocator.Get<ShipAmmoPool>().objPool.Release(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        _moveTween.Kill();
+    }
 }

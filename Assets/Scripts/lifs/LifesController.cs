@@ -12,14 +12,12 @@ public class LifesController : MonoBehaviour
     private void LoseLife()
     {
         lifesCount--;
-        if (lifesCount >= 0)
+        view.DecreaseLife(lifesCount);
+        if (lifesCount <= 0)
         {
-            view.DecreaseLife(lifesCount);
-        }
-        else {
             Actions.GameOver?.Invoke();
-            Debug.Log("Game Over");
         }
+        
     }
     private void OnDisable()
     {

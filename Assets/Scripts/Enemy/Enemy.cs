@@ -14,12 +14,6 @@ public class Enemy : MonoBehaviour
     private int _maxRadious = 4;
     private int increment = 1;
 
-    Vector3 initialPosition;
-    private void Awake()
-    {
-        initialPosition = transform.position;
-    }
-  
     private void Start()
     {
         _minRadious = radious;
