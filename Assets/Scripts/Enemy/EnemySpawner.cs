@@ -3,23 +3,26 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] float waitingTimeBetweenGroups = 1.2f;
+    [SerializeField] float waitingTimeBetweenElements = 0.5f;
     [SerializeField] Enemy enemy;
     [SerializeField] EnemyPool enemyPool;
 
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartCoroutine(InitEnemy(10));
-        }
+        StartCoroutine(InitEnemy());
     }
-    IEnumerator InitEnemy(int numberOfEnemies)
+    IEnumerator InitEnemy()
     {
+        int numberOfEnemies = Random.Range(2, 10);
         for (int i = 0; i < numberOfEnemies; i++)
         {
               enemyPool.Get();
-             yield return new WaitForSeconds(0.5f);
+             yield return new WaitForSeconds(waitingTimeBetweenElements);
         }
+
+        yield return new WaitForSeconds(waitingTimeBetweenGroups);
+        StartCoroutine(InitEnemy());
     }
+    
 }

@@ -5,16 +5,16 @@ using UnityEngine.Pool;
 public class ShipBullet : MonoBehaviour, IBullet
 {
     [SerializeField] float speed = 10;
+    Vector3 _screenCenter = Vector3.zero;
+
     private void OnEnable()
     {
-       var ship= FindObjectOfType<Ship>();
-        transform.position = ship.transform.position;
-        Shoot();
+       MoveToTarget();
     }
 
-    public void Shoot()
+    public void MoveToTarget()
     {
-         transform.DOMove(Vector3.zero, speed).
+        transform.DOMove(_screenCenter, speed).
             SetSpeedBased(true).OnComplete(() => Release()).SetEase(Ease.Linear); 
     }
 

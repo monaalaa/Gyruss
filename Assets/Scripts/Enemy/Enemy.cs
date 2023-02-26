@@ -4,14 +4,22 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float radious= 0.3f;
+   
     private Vector3 _screenCenter = Vector3.zero;
     private Vector3 _direction = new Vector3(0, 0, -1);
 
     private float _incrementalRadious = 0.01f;
     private float _minRadious;
+    
     private int _maxRadious = 4;
     private int increment = 1;
-    
+
+    Vector3 initialPosition;
+    private void Awake()
+    {
+        initialPosition = transform.position;
+    }
+  
     private void Start()
     {
         _minRadious = radious;
@@ -19,6 +27,7 @@ public class Enemy : MonoBehaviour
     
     private void OnEnable()
     {
+     //   transform.position = initialPosition;
         StartCoroutine(UpdateRadious());
     }
   
@@ -54,8 +63,9 @@ public class Enemy : MonoBehaviour
 
     private void Reset()
     {
-        gameObject.SetActive(false);
-        radious = _minRadious;
         StopCoroutine(UpdateRadious());
+        ServiceLocator.Get<EnemyPool>().objPool.Release(gameObject);
+        increment = 1;
+        radious = _minRadious+ _incrementalRadious;
     }
 }

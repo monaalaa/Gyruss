@@ -8,12 +8,12 @@ public class ObjectPoolBase : MonoBehaviour
 
     private void Start()
     {
-        InitAmmoPool();
+        InitObjPool();
     }
 
-    private void InitAmmoPool()
+    private void InitObjPool()
     {
-        objPool = new ObjectPool<GameObject>(CreateAmmo, OnGet, OnRelease);
+        objPool = new ObjectPool<GameObject>(CreateObj, OnGet, OnRelease);
     }
 
     private void OnRelease(GameObject obj)
@@ -26,7 +26,7 @@ public class ObjectPoolBase : MonoBehaviour
         obj.gameObject.SetActive(true);
     }
 
-    private GameObject CreateAmmo()
+    private GameObject CreateObj()
     {
         return Instantiate(model);
     }

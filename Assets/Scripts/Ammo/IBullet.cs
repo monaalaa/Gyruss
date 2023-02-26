@@ -1,5 +1,5 @@
 public interface IBullet 
 {
-    void Shoot();
+    void MoveToTarget();
     void Release();
 }
