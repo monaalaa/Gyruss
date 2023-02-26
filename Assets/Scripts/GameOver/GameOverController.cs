@@ -8,19 +8,16 @@ public class GameOverController : MonoBehaviour
     {
         Actions.GameOver += OnGameOver;
     }
-
     private void OnGameOver()
     {
         PauseGame();
         view.ShowGameOver();
     }
-
     private void OnDestroy()
     {
         Actions.GameOver -= OnGameOver;
     }
-
-   private void PauseGame()
+    private void PauseGame()
     {
         Time.timeScale = 0;
     }

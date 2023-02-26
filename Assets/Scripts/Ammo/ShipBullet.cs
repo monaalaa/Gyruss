@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ShipBullet : MonoBehaviour, IBullet
 {
@@ -11,13 +10,11 @@ public class ShipBullet : MonoBehaviour, IBullet
     {
        MoveToTarget();
     }
-
     public void MoveToTarget()
     {
         _moveTween = transform.DOMove(_screenCenter, speed).
             SetSpeedBased(true).OnComplete(() => Release()).SetEase(Ease.Linear);
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) 
@@ -26,12 +23,10 @@ public class ShipBullet : MonoBehaviour, IBullet
             Release();
         }
     }
-    
     public void Release()
     {
          ServiceLocator.Get<ShipAmmoPool>().objPool.Release(gameObject);
     }
-
     private void OnDestroy()
     {
         _moveTween.Kill();
