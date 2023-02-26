@@ -12,4 +12,9 @@ public class ShipAmmoPool : ObjectPoolBase
         obj.transform.position = spawnPoint.position;
         base.OnGet(obj);
     }
+
+    private void OnDestroy()
+    {
+        ServiceLocator.Remove<ShipAmmoPool>(this);
+    }
 }

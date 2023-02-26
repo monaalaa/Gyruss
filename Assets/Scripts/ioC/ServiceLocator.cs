@@ -21,4 +21,9 @@ public static class ServiceLocator
             throw new NotImplementedException("Service not available.");    
         }
     }
+
+    public static void Remove<T>(T value)
+    {
+        _container.Remove(typeof(T));
+    }
 }

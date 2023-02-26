@@ -6,4 +6,8 @@ public class EnemyPool : ObjectPoolBase
     {
         ServiceLocator.Add<EnemyPool>(this);
     }
+    private void OnDestroy()
+    {
+        ServiceLocator.Remove<EnemyPool>(this);
+    }
 }

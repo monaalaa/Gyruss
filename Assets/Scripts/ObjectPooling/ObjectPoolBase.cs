@@ -6,7 +6,7 @@ public class ObjectPoolBase : MonoBehaviour
     [SerializeField] protected GameObject model;
     public IObjectPool<GameObject> objPool;
 
-    private void Start()
+    private void OnEnable()
     {
         InitObjPool();
     }
