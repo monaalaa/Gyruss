@@ -31,6 +31,13 @@ public class Ship : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Actions.LoseLife?.Invoke();
+        }
+    }
     protected void RotateAroundCenter()
     {
         transform.RotateAround(_screenCenter, _direction, Time.deltaTime * this.speed);
