@@ -36,6 +36,14 @@ public class Enemy : MonoBehaviour
         RotateWithenRadious();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Actions.UpdateScore?.Invoke(radious);
+            Reset();
+        }
+    }
     private void RotateWithenRadious()
     {
         transform.position = radious * Vector3.Normalize(transform.position - _screenCenter) ;

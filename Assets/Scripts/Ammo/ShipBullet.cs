@@ -5,8 +5,8 @@ using UnityEngine.Pool;
 public class ShipBullet : MonoBehaviour, IBullet
 {
     [SerializeField] float speed = 10;
-    Vector3 _screenCenter = Vector3.zero;
-
+    private Vector3 _screenCenter = Vector3.zero;
+    private Tween _moveTween;
     private void OnEnable()
     {
        MoveToTarget();
@@ -14,14 +14,17 @@ public class ShipBullet : MonoBehaviour, IBullet
 
     public void MoveToTarget()
     {
-        transform.DOMove(_screenCenter, speed).
-            SetSpeedBased(true).OnComplete(() => Release()).SetEase(Ease.Linear); 
+        _moveTween = transform.DOMove(_screenCenter, speed).
+            SetSpeedBased(true).OnComplete(() => Release()).SetEase(Ease.Linear);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Check if collide with Enemy
-        Release();
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            _moveTween.Kill();
+            Release();
+        }
     }
     
     public void Release()
