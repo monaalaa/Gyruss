@@ -662,40 +662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0aceeaa150d954a9bbf21f87d759e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputController: {fileID: 1535663337}
   speed: 100
-  movment:
-    m_Name: Movment
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4408d5f7-edfa-42e3-9cc0-f1374df0761b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 3D Vector
-      m_Id: 4b51aabf-01dc-487f-8bca-6030c8645570
-      m_Path: 3DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Movment
-      m_Flags: 4
-    - m_Name: forward
-      m_Id: ca4cb7a1-cef2-4735-8a04-503b120fd5af
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Movment
-      m_Flags: 8
-    - m_Name: backward
-      m_Id: fdb94194-e5f4-43d3-ac55-6c0bc35f3162
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Movment
-      m_Flags: 8
-    m_Flags: 0
 --- !u!114 &471172256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1461,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333159707}
   m_CullTransparentMesh: 1
+--- !u!1 &1535663334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535663336}
+  - component: {fileID: 1535663337}
+  m_Layer: 0
+  m_Name: InputController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535663336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535663334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535663337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535663334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be7bea4c729ea1499b6d5757f323567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1624182236
 GameObject:
   m_ObjectHideFlags: 0

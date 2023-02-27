@@ -3,7 +3,8 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] ScoreView view;
-    int _score = 0;
+
+    private int _score = 0;
     private void Start()
     {
         Actions.UpdateScore += UpdateScore;
@@ -24,7 +25,7 @@ public class ScoreController : MonoBehaviour
         {
             score = 2;
         }
-       else if (radious > 2 && radious <= 3)
+        else if (radious > 2 && radious <= 3)
         {
             score = 5;
         }

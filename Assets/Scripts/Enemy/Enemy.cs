@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float radious= 0.3f;
    
     private Vector3 _screenCenter = Vector3.zero;
-    //private Vector3 _direction = new Vector3(0, 0, -1);
-
     private float _incrementalRadious = 0.01f;
     private float _minRadious;
     
@@ -18,15 +16,17 @@ public class Enemy : MonoBehaviour
     {
         _minRadious = radious;
     }
+    
     private void OnEnable()
     {
-     //   transform.position = initialPosition;
         StartCoroutine(UpdateRadious());
     }
+    
     private void Update()
     {
         RotateWithenRadious();
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -35,12 +35,14 @@ public class Enemy : MonoBehaviour
             Reset();
         }
     }
+    
     private void RotateWithenRadious()
     {
         transform.position = radious * Vector3.Normalize(transform.position - _screenCenter) ;
         var direction = new Vector3(0, 0, EnemySpawner.direction);
         transform.RotateAround(_screenCenter, direction, Time.deltaTime * 100);
     }
+    
     private IEnumerator UpdateRadious()
     {
         radious += ((_incrementalRadious + Time.deltaTime) * increment);
@@ -59,6 +61,7 @@ public class Enemy : MonoBehaviour
         
         StartCoroutine(UpdateRadious());
     }
+    
     private void Reset()
     {
         StopCoroutine(UpdateRadious());

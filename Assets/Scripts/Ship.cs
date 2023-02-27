@@ -2,33 +2,26 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Ship : MonoBehaviour
 {
-    private Vector3 _screenCenter = Vector3.zero;
-
+    [SerializeField] InputController inputController;
     [SerializeField] private float speed = 100f;
-    [SerializeField] private InputAction movment;
-    
+
+    private Vector3 _screenCenter = Vector3.zero;
     private Vector3 _direction;
-   
-    private void Awake()
+
+    private void Start()
     {
-        movment.performed += Move;
-        movment.canceled += Move;
+        inputController.playerInputActions.Player.Shoot.performed += Shoot_performed;
     }
-  
-    private void OnEnable()
-    {
-        movment.Enable();
-    }
-    
-    private void Move(InputAction.CallbackContext context) => _direction = context.ReadValue<Vector3>();
-    
+
     private void Update()
     {
         RotateAroundCenter();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
+        //Shoot();
+    }
+
+    private void Shoot_performed(InputAction.CallbackContext obj)
+    {
+        Shoot();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,19 +31,21 @@ public class Ship : MonoBehaviour
             Actions.LoseLife?.Invoke();
         }
     }
+
     protected void RotateAroundCenter()
     {
+        _direction = inputController.GetMovementVector();
         transform.RotateAround(_screenCenter, _direction, Time.deltaTime * this.speed);
-    }
-   
-    private void OnDisable()
-    {
-        movment.Disable();
     }
 
     private void Shoot()
     {
         ShipShootCommand shoot = new ShipShootCommand();
         shoot.Execute();
+    }
+
+    private void OnDisable()
+    {
+        inputController.playerInputActions.Player.Shoot.performed -= Shoot_performed;
     }
 }
